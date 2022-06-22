@@ -6,6 +6,7 @@
     public partial class Model : IModel
     {
         public string SearchText { get; set; }
+        public string NewItemId { get; set; }
 
         public List<Item> GetItemList
         {
@@ -33,6 +34,15 @@
             {
                 Item[] items = new Service().GetItem(this.SearchText);
                 this.SearchItemList = items.ToList();
+            }
+        }
+
+        public void AddItemsLoad()
+        {
+            if (!string.IsNullOrEmpty(this.NewItemId))
+            {
+                new Service().AddItem(this.NewItemId);
+                this.NewItemId = null;
             }
         }
     }

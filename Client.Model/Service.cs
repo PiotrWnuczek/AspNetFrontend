@@ -4,6 +4,7 @@
     using System.Net.Http;
     using System.Threading.Tasks;
     using System.Text.Json;
+    using System.Text;
 
     public class Service
     {
@@ -29,6 +30,26 @@
             string callUri = String.Format("GetItem/{0}", searchText);
             Item[] items = this.CallWebService<Item[]>(HttpMethod.Get, callUri);
             return items;
+        }
+
+        public void AddItem(string NewItemId)
+        {
+            Task<string> call = AddItemCall(NewItemId);
+            call.Wait();
+        }
+
+        public async Task<string> AddItemCall(string NewItemId)
+        {
+            Item item = new(NewItemId);
+            var json = JsonSerializer.Serialize(item);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpClient httpClient = new();
+            string requestUri = String.Format("http://{0}:{1}/AddItem", this.serviceHost, this.servicePort);
+            httpClient.DefaultRequestHeaders.Add("Accept", "text/plain");
+            HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(requestUri, data);
+            httpResponseMessage.EnsureSuccessStatusCode();
+            string httpResponseContent = await httpResponseMessage.Content.ReadAsStringAsync();
+            return httpResponseContent;
         }
 
         public DataType CallWebService<DataType>(HttpMethod httpMethod, string webServiceUri)

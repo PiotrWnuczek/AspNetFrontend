@@ -8,5 +8,6 @@
         IModel Model { get; set; }
         Task GetItemsAsync();
         Task SearchItemsAsync();
+        Task AddItemsAsync();
     }
 }

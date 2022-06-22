@@ -20,5 +20,10 @@
         {
             await Task.Run(() => this.Model.SearchItemsLoad());
         }
+
+        public async Task AddItemsAsync()
+        {
+            await Task.Run(() => this.Model.AddItemsLoad());
+        }
     }
 }

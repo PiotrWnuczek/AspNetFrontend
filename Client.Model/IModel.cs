@@ -8,5 +8,6 @@
         List<Item> SearchItemList { get; }
         void GetItemsLoad();
         void SearchItemsLoad();
+        void AddItemsLoad();
     }
 }
