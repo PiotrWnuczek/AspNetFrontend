@@ -6,6 +6,7 @@
     public interface IController
     {
         IModel Model { get; set; }
+        Task GetItemsAsync();
         Task SearchItemsAsync();
     }
 }

@@ -11,9 +11,14 @@
             this.Model = model;
         }
 
+        public async Task GetItemsAsync()
+        {
+            await Task.Run(() => this.Model.GetItemsLoad());
+        }
+
         public async Task SearchItemsAsync()
         {
-            await Task.Run(() => this.Model.LoadItemList());
+            await Task.Run(() => this.Model.SearchItemsLoad());
         }
     }
 }

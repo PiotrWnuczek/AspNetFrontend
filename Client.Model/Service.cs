@@ -17,7 +17,14 @@
             this.servicePort = 5000;
         }
 
-        public Item[] GetItems(string searchText)
+        public Item[] GetItems()
+        {
+            string callUri = "GetItems";
+            Item[] items = this.CallWebService<Item[]>(HttpMethod.Get, callUri);
+            return items;
+        }
+
+        public Item[] GetItem(string searchText)
         {
             string callUri = String.Format("GetItem/{0}", searchText);
             Item[] items = this.CallWebService<Item[]>(HttpMethod.Get, callUri);

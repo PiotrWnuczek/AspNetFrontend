@@ -14,11 +14,17 @@
         }
         private List<Item> itemList = new List<Item>();
 
-        public void LoadItemList()
+        public void GetItemsLoad()
+        {
+            Item[] items = new Service().GetItems();
+            this.ItemList = items.ToList();
+        }
+
+        public void SearchItemsLoad()
         {
             if (!string.IsNullOrEmpty(this.SearchText))
             {
-                Item[] items = new Service().GetItems(this.SearchText);
+                Item[] items = new Service().GetItem(this.SearchText);
                 this.ItemList = items.ToList();
             }
         }

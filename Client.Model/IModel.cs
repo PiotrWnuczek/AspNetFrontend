@@ -5,6 +5,7 @@
     {
         string SearchText { get; set; }
         List<Item> ItemList { get; }
-        void LoadItemList();
+        void GetItemsLoad();
+        void SearchItemsLoad();
     }
 }
