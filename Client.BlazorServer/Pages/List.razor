@@ -2,15 +2,13 @@
 @inject IController controller
 @inject IModel model
 
-<h5>Text to search:</h5>
-<input class="text-box single-line p-1" @bind="model.SearchText" />
-<button class="btn btn-primary py-1" @onclick="controller.SearchItemsAsync">
-    Search
+<button class="btn btn-primary py-1" @onclick="controller.GetItemsAsync">
+    Get All
 </button>
-
+<br />
 <div>
-    @foreach (Item itemData in model.ItemList)
+    @foreach (Item itemData in model.GetItemList)
     {
-        <p>@itemData.Id</p>
+        <div>@itemData.Id</div>
     }
 </div>

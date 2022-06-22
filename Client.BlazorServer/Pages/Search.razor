@@ -1,0 +1,15 @@
+﻿@page "/search"
+@inject IController controller
+@inject IModel model
+
+<input class="text-box single-line p-1" @bind="model.SearchText" />
+<button class="btn btn-primary py-1" @onclick="controller.SearchItemsAsync">
+    Search
+</button>
+<br />
+<div>
+    @foreach (Item itemData in model.SearchItemList)
+    {
+        <div>@itemData.Id</div>
+    }
+</div>
