@@ -4,6 +4,7 @@
     public interface IModel
     {
         string SearchText { get; set; }
+        string NewItemId { get; set; }
         List<Item> GetItemList { get; }
         List<Item> SearchItemList { get; }
         void GetItemsLoad();
