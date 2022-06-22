@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Client.Model\Client.Model.csproj" />
+    <ProjectReference Include="..\Client.Model\Client.Model.csproj" />
+  </ItemGroup>
+
+</Project>
